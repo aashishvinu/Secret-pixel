@@ -1,15 +1,14 @@
-from flask import Flask, request, send_file, render_template
-import io
-import os
-import struct
 import binascii
 import hashlib
+import io
+import os
 import tempfile
 import wave
-import subprocess
+
+from flask import Flask, render_template, request, send_file
 from PIL import Image
-from stegano import lsb
 from PyPDF2 import PdfReader, PdfWriter
+from stegano import lsb
 
 app = Flask(__name__)
 
