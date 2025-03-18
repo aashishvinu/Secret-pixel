@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Secret Pixel - Image Steganography</title>
+    <title>SecretPixel - Multidata Steganography</title>
     <link rel="stylesheet" href="/static/style.css" />
     <meta
       name="description"
-      content="Hide and reveal secret messages in images using steganography techniques"
+      content="Hide and reveal secret messages in images, audio, video, and PDF files"
     />
   </head>
   <body>
     <div class="page-wrapper">
-      <h1>IMAGE STEGANOGRAPHY</h1>
+      <h1>MULTIDATA STEGANOGRAPHY</h1>
 
       <div class="container">
         <div class="tab">
@@ -34,22 +34,28 @@
               <input
                 class="custom-file-input"
                 type="file"
-                id="encodeImage"
-                name="image"
-                accept="image/*"
+                id="encodeFile"
+                name="file"
+                accept="image/*,audio/*,video/*,application/pdf"
                 required
               />
+              <div class="file-type-indicator" id="fileTypeIndicator">
+                <span>Choose a file</span>
+              </div>
             </div>
             <div class="input-group">
-              <input
-                type="text"
+              <textarea
                 id="textToHide"
                 name="text"
                 placeholder="Enter text to hide"
                 required
-              />
+              ></textarea>
+              <div class="text-counter">
+                <span id="textCounter">0</span> characters
+              </div>
             </div>
-            <button type="submit">Hide</button>
+            <input type="hidden" id="fileType" name="file_type" value="" />
+            <button type="submit">Hide Data</button>
           </form>
         </div>
 
@@ -59,13 +65,16 @@
               <input
                 class="custom-file-input"
                 type="file"
-                id="decodeImage"
-                name="image"
-                accept="image/*"
+                id="decodeFile"
+                name="file"
+                accept="image/*,audio/*,video/*,application/pdf"
                 required
               />
+              <div class="file-type-indicator" id="decodeFileTypeIndicator">
+                <span>No file selected</span>
+              </div>
             </div>
-            <button type="submit">Reveal Text</button>
+            <button type="submit">Reveal Hidden Data</button>
           </form>
         </div>
       </div>
@@ -80,7 +89,9 @@
       <div id="result"></div>
     </div>
 
-    <footer><a href="https://aashishvinu.me/">© Aashish Vinu</a></footer>
+    <footer>
+      <a href="https://aashishvinu.me/">SECRET PIXEL</a>
+    </footer>
 
     <script src="/static/script.js"></script>
   </body>
