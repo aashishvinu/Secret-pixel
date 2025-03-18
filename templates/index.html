@@ -3,59 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Secret Pixel</title>
+    <title>Secret Pixel - Image Steganography</title>
     <link rel="stylesheet" href="/static/style.css" />
+    <meta
+      name="description"
+      content="Hide and reveal secret messages in images using steganography techniques"
+    />
   </head>
   <body>
-    <h1>IMAGE STEGNOGRAPHY</h1>
-    <section class="container">
-      <div class="tab">
-        <button
-          class="tablinks"
-          onclick="openType(event, 'Encode')"
-          id="defaultOpen"
-        >
-          Encode
-        </button>
-        <button class="tablinks" onclick="openType(event, 'Decode')">
-          Decode
-        </button>
+    <div class="page-wrapper">
+      <h1>IMAGE STEGANOGRAPHY</h1>
+
+      <div class="container">
+        <div class="tab">
+          <button
+            class="tablinks"
+            onclick="openType(event, 'Encode')"
+            id="defaultOpen"
+          >
+            Encode
+          </button>
+          <button class="tablinks" onclick="openType(event, 'Decode')">
+            Decode
+          </button>
+        </div>
+
+        <div id="Encode" class="tabcontent">
+          <form id="encodeForm" enctype="multipart/form-data">
+            <div class="input-group">
+              <input
+                class="custom-file-input"
+                type="file"
+                id="encodeImage"
+                name="image"
+                accept="image/*"
+                required
+              />
+            </div>
+            <div class="input-group">
+              <input
+                type="text"
+                id="textToHide"
+                name="text"
+                placeholder="Enter text to hide"
+                required
+              />
+            </div>
+            <button type="submit">Hide</button>
+          </form>
+        </div>
+
+        <div id="Decode" class="tabcontent">
+          <form id="decodeForm" enctype="multipart/form-data">
+            <div class="input-group">
+              <input
+                class="custom-file-input"
+                type="file"
+                id="decodeImage"
+                name="image"
+                accept="image/*"
+                required
+              />
+            </div>
+            <button type="submit">Reveal Text</button>
+          </form>
+        </div>
       </div>
-      <div id="Encode" , class="tabcontent">
-        <form id="encodeForm" enctype="multipart/form-data">
-          <input
-            class="custom-file-input"
-            type="file"
-            id="encodeImage"
-            name="image"
-            required
-          />
-          <input
-            type="text"
-            id="textToHide"
-            name="text"
-            placeholder="Enter text to hide"
-            required
-          />
-          <button type="submit">Hide</button>
-        </form>
+
+      <div id="loadingIndicator" class="loading-indicator">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
-      <div id="Decode" , class="tabcontent">
-        <form id="decodeForm" enctype="multipart/form-data">
-          <input
-            class="custom-file-input"
-            type="file"
-            id="decodeImage"
-            name="image"
-            required
-          />
-          <button type="submit">Reveal Text</button>
-        </form>
-      </div>
-    </section>
-    <div id="result"></div>
+
+      <div id="result"></div>
+    </div>
+
+    <footer><a href="https://aashishvinu.me/">© Aashish Vinu</a></footer>
 
     <script src="/static/script.js"></script>
-    <footer><a href="https://aashishvinu.me/">© Aashish Vinu</a></footer>
   </body>
 </html>
